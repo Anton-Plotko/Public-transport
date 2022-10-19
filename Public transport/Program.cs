@@ -1,3 +1,6 @@
+
+using Public_transport.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -21,5 +24,10 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+using (Context db = new())
+{
+}
+
 
 app.Run();
