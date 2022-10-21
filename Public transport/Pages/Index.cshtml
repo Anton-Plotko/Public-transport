@@ -1,17 +1,18 @@
 ﻿@page
 @model IndexModel
+@using Public_transport.Models
 @{
     ViewData["Title"] = "";
 }
 
 <div class="text-center">
     <h1 class="display-4">Выберите вид транспорта!</h1>
-    <a class="navbar-brand" asp-area="" asp-page="/Trolleybuses">Троллейбусы</a>
+    <a class="navbar-brand" href="/Trolleybuses?Type=T">Троллейбусы</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-    <a class="navbar-brand" asp-area="" asp-page="/Buses">Автобусы</a>
+    <a class="navbar-brand" href="/Buses?Type=A">Автобусы</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

@@ -1,4 +1,17 @@
 ﻿@page
 @model Public_transport.Pages.TrolleybusesModel
 @{
+    int i = 1;
 }
+<div class="text-center">
+    <h1 class="display-4">Выберите Троллейбус!</h1>
+    <ul style="list-style: none;">
+    @foreach (PublicTransport Troll in Model.ResTroll)
+    {
+            <li><a class="navbar-brand" asp-area="" asp-page="/Stops?Type=@Troll.Type">@Troll.Name</a></li>
+        if (i % 2 == 0)
+        {<br>}
+        ++i;
+    }
+    </ul>
+</div>
