@@ -1,4 +1,12 @@
 ﻿@page
+@using Public_transport.Models
 @model Public_transport.Pages.StopsModel
 @{
 }
+<div class="text-center">
+    <h1 class="display-4">Выберите остановку!</h1>
+    @foreach (Stop Stop in Model.ResNameStops)
+    {
+        <li><a class="navbar-brand" href="">@Stop.Name</a></li>
+    }
+</div>

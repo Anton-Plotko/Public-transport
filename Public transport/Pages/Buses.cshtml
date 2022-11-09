@@ -2,6 +2,7 @@
 @model Public_transport.Pages.BusesModel
 @{
     int i = 1;
+    int a = 17;
 }
 
 <div class="text-center">
@@ -10,11 +11,13 @@
     <ul style="list-style: none;">
     @foreach (PublicTransport Bus in Model.ResBus)
     {
-        <li><a class="navbar-brand" asp-area="" asp-page="/Stops?Type=@Bus.Type">@Bus.Name</a></li>
+            <li><a class="navbar-brand" href="/Stops?IdTransport=@a">@Bus.Name</a></li>
         if(i%2==0)
-        {<br>}
-        ++i;
-    }
+            {<br>
+            }
+            ++i;
+            ++a;
+        }
     </ul>
    
 </div>
