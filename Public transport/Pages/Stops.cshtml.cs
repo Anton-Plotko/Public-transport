@@ -9,7 +9,7 @@ namespace Public_transport.Pages
     public class StopsModel : PageModel
     {
         public Relationship_between_transports_and_stops[] ResIdStops = new Relationship_between_transports_and_stops[0];
-        public Stop[] ResNameStops = new Stop[0];
+        public List<Stop> ResNameStops = new List<Stop>();
         public void OnGet(int IdTransport)
         {
             using (Context db = new Context())
@@ -17,21 +17,29 @@ namespace Public_transport.Pages
                 Relationship_between_transports_and_stops[] IdStopsArray = db.Relationships.ToArray();
                 ResIdStops = (from Stp in IdStopsArray where (FilterStops1(Stp, IdTransport)) select Stp).ToArray();
                 Stop[] StopArray = db.Stops.ToArray();
-                foreach(Relationship_between_transports_and_stops stops in ResIdStops)
+                foreach (Relationship_between_transports_and_stops Stops in ResIdStops)
                 {
-                    ResNameStops = (from Stops in StopArray where (FilterStops2(Stops,stops.IdStops)) select Stops).ToArray();
+                    foreach (Stop stop in StopArray)
+                    {
+                        if (FilterStops2(Stops.IdStops, stop.Id))
+                        {
+                            ResNameStops.Add(stop);
+                            break;
+                        }
+                        
+                    }
                 }
+                
             }
         }
-
         private bool FilterStops1(Relationship_between_transports_and_stops stp, int searchingStops)
         {
             bool isFinded = stp.IdTransport.Equals(searchingStops);
             return isFinded;
         }
-        private bool FilterStops2(Stop stop,int searchingStop)
+        private bool FilterStops2(int stop,int searchingStop)
         {
-            bool isFinded = searchingStop.Equals(stop.Id);
+            bool isFinded = stop.Equals(searchingStop);
             return isFinded;
         }
     }

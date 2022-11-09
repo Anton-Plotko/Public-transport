@@ -7,6 +7,10 @@
     <h1 class="display-4">Выберите остановку!</h1>
     @foreach (Stop Stop in Model.ResNameStops)
     {
-        <li><a class="navbar-brand" href="">@Stop.Name</a></li>
+        foreach(Relationship_between_transports_and_stops rel in Model.ResIdStops)
+        {
+        <li><a class="navbar-brand" href="/Time?IdStops=@Stop.Id&IdTransport=@rel.IdTransport">@Stop.Name</a></li>
+        break;
+        }
     }
 </div>
