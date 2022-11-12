@@ -4,7 +4,8 @@
 @{
 }
 <div class="text-center">
-    <h1 class="display-4">Выберите остановку!</h1>
+    <h1 class="display-6">Выберите остановку!</h1>
+    <ul style="list-style: none;">
     @foreach (Stop Stop in Model.ResNameStops)
     {
         foreach(Relationship_between_transports_and_stops rel in Model.ResIdStops)
@@ -13,4 +14,5 @@
         break;
         }
     }
+    </ul>
 </div>
