@@ -1,0 +1,20 @@
+﻿@page
+@using Public_transport.Models
+@model Public_transport.Pages.All_StopsModel
+@{
+    int namber = 1;
+}
+<div>
+    <h1 class="display-6">Выберите остановку!</h1>
+    <ul style="list-style: none;">
+        @*<form action="" method="get">
+            <input name="s" placeholder="Искать здесь..." type="search">
+            <button type="submit">Поиск</button>
+        </form*@
+    @foreach (Stop Stop in Model.ResAllStops)
+    {
+            <li><a class="navbar-brand" href="/Transport?IdStops=@namber">@Stop.Name</a></li>
+            ++namber;
+    }
+    </ul>
+</div>

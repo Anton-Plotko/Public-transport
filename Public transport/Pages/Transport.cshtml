@@ -1,0 +1,46 @@
+﻿@page
+@using Public_transport.Models
+@model Public_transport.Pages.TransportModel
+@{
+}
+<div class="text-center">
+    <h1 class="display-6">Выберите транспорт!</h1>
+        <table>
+            <tr>
+                <th>Троллейбусы</th>
+                <th>Автобусы</th>
+            </tr>
+            <tr>
+            <td>@foreach (PublicTransport Name in Model.ResName)
+                {
+                    if (Name.Type == "T")
+                    {
+                        <a class="navbar-brand" href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id">@Name.Name</a>
+                    }
+                    
+                }
+            </td>
+            <td>
+                @foreach (PublicTransport Name in Model.ResName)
+                {
+                    if (Name.Type == "A")
+                    {
+                        <a class="navbar-brand" href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id">@Name.Name</a>
+                    }
+
+                }
+            </td>
+            </tr>
+       @*@foreach(PublicTransport Name in Model.ResName)
+       {
+           if(Name.Type=="T")
+           {
+            <a class="navbar-brand" href="">T @Name.Name</a>
+           }
+           else
+           {
+            <a class="navbar-brand" href="">A @Name.Name</a>
+           }
+       }*@
+        </table>
+</div>

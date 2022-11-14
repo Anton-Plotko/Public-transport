@@ -1,7 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Public_transport.Models;
-using static System.Net.WebRequestMethods;
+
 
 namespace Public_transport.Pages
 {

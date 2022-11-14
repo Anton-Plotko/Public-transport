@@ -11,10 +11,12 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="navbar-brand">
+                <a class="navbar-brand" href="/Index">Маршруты</a><br>
+                <a class="navbar-brand" href="/All_Stops">Остановки</a>
+            </div>
             <div class="container">
-                <p>г.Брест,Беларусь</p>
                 <div id="current_date_time_block"></div>
-                
                 <script type="text/javascript">
 
                     
@@ -35,20 +37,21 @@
                         var minutes = zero_first_format(current_datetime.getMinutes());
                         var seconds = zero_first_format(current_datetime.getSeconds());
                         
+                       
                         return new Date().toLocaleString('ru-ru', { weekday: 'long', }) + " " +day + "." + month + "." + year + " " + hours + ":" + minutes + ":" + seconds;
                     }
                 
                 </script>
-                <div id="current_date_time_block2"></div>
+                <div class="navbar-brand mb-0 h-100" id="current_date_time_block2"></div>
 
                 <script type="text/javascript">
 
-                    
                     setInterval(function () {
                         document.getElementById('current_date_time_block2').innerHTML = date_time();
                     }, 1000);
+
                 </script>
-                
+                <p>г.Брест,Беларусь</p>
             </div>
         </nav>
     </header>
@@ -58,12 +61,11 @@
         </main>
     </div>
 
-   
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>
