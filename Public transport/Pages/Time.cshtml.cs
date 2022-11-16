@@ -7,12 +7,18 @@ namespace Public_transport.Pages
     public class TimeModel : PageModel
     {
         public Relationship_between_transports_and_stops[] Resalt = new Relationship_between_transports_and_stops[0];
-        public string TimeMonFri;
-        public string TimeSaSu;
-        public void OnGet(int IdStops,int IdTransport)
+        public string? TimeMonFri;
+        public string? TimeSaSu;
+        public string? NameT;
+        public string? NameS;
+        public string? Type;
+        public void OnGet(int IdStops,int IdTransport,string NameTransport,string NameStop,string TypeTransport)
         {
             using (Context db = new Context())
             {
+                NameT = NameTransport;
+                NameS = NameStop;
+                Type = TypeTransport;
                 Relationship_between_transports_and_stops[] IdStopsArray = db.Relationships.ToArray();
                 Resalt = (from Stp in IdStopsArray where (FilterStops1(Stp, IdTransport)) select Stp).ToArray();
                 foreach (Relationship_between_transports_and_stops resalt in Resalt)

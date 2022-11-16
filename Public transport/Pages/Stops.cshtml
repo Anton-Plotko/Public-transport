@@ -4,13 +4,21 @@
 @{
 }
 <div class="text-center">
+    @if(@Model.Type=="T")
+    {
+        <h2>Троллейбус № @Model.Name</h2>
+    }
+    else
+    {
+        <h2>Автобус № @Model.Name</h2>
+    }
     <h1 class="display-6">Выберите остановку!</h1>
     <ul style="list-style: none;">
     @foreach (Stop Stop in Model.ResNameStops)
     {
         foreach(Relationship_between_transports_and_stops rel in Model.ResIdStops)
         {
-        <li><a class="navbar-brand" href="/Time?IdStops=@Stop.Id&IdTransport=@rel.IdTransport">@Stop.Name</a></li>
+        <li><a class="navbar-brand" href="/Time?IdStops=@Stop.Id&IdTransport=@rel.IdTransport&NameTransport=@Model.Name&NameStop=@Stop.Name&TypeTransport=@Model.Type">@Stop.Name</a></li>
         break;
         }
     }

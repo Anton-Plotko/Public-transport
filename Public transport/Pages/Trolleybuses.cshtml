@@ -9,7 +9,7 @@
     <ul style="list-style: none;">
     @foreach (PublicTransport Troll in Model.ResTroll)
     {
-            <li><a class="navbar-brand" href="/Stops?IdTransport=@a">@Troll.Name</a></li>
+            <li><a class="navbar-brand" href="/Stops?IdTransport=@a&NameTransport=@Troll.Name&TypeTransport=@Troll.Type">@Troll.Name</a></li>
         if (i % 2 == 0)
             {<br>
             }

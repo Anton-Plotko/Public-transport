@@ -13,7 +13,7 @@
         </form*@
     @foreach (Stop Stop in Model.ResAllStops)
     {
-            <li><a class="navbar-brand" href="/Transport?IdStops=@namber">@Stop.Name</a></li>
+            <li><a class="navbar-brand" href="/Transport?IdStops=@namber&NameStop=@Stop.Name">@Stop.Name</a></li>
             ++namber;
     }
     </ul>

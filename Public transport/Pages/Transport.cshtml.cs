@@ -9,9 +9,11 @@ namespace Public_transport.Pages
         public Relationship_between_transports_and_stops[] ResId = new Relationship_between_transports_and_stops[0];
         public List<PublicTransport> ResName = new List<PublicTransport>();
         public int ID;
-        public void OnGet(int IdStops)
+        public string? Name;
+        public void OnGet(int IdStops,string NameStop)
         {
             ID = IdStops;
+            Name = NameStop;
             using (Context db = new Context())
             {
                 Relationship_between_transports_and_stops[] IdStopsArray = db.Relationships.ToArray();

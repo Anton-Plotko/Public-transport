@@ -10,10 +10,14 @@ namespace Public_transport.Pages
     {
         public Relationship_between_transports_and_stops[] ResIdStops = new Relationship_between_transports_and_stops[0];
         public List<Stop> ResNameStops = new List<Stop>();
-        public void OnGet(int IdTransport)
+        public string? Name; 
+        public string? Type; 
+        public void OnGet(int IdTransport,string NameTransport,string TypeTransport)
         {
             using (Context db = new Context())
             {
+                Name=NameTransport;
+                Type=TypeTransport;
                 Relationship_between_transports_and_stops[] IdStopsArray = db.Relationships.ToArray();
                 ResIdStops = (from Stp in IdStopsArray where (FilterStops1(Stp, IdTransport)) select Stp).ToArray();
                 Stop[] StopArray = db.Stops.ToArray();

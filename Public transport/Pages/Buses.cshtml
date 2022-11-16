@@ -11,7 +11,7 @@
     <ul style="list-style: none;">
     @foreach (PublicTransport Bus in Model.ResBus)
     {
-            <li><a class="navbar-brand" href="/Stops?IdTransport=@a">@Bus.Name</a></li>
+            <li><a class="navbar-brand" href="/Stops?IdTransport=@a&NameTransport=@Bus.Name&TypeTransport=@Bus.Type">@Bus.Name</a></li>
         if(i%2==0)
             {<br>
             }
