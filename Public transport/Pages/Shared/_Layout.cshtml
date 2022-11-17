@@ -11,11 +11,8 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="navbar-brand">
-                <a class="navbar-brand" href="/Index">Маршруты</a><br>
-                <a class="navbar-brand" href="/All_Stops">Остановки</a>
-            </div>
             <div class="container">
+            <div class="navbar-text">
                 <div id="current_date_time_block"></div>
                 <script type="text/javascript">
 
@@ -42,8 +39,10 @@
                     }
                 
                 </script>
-                <div class="navbar-brand mb-0 h-100" id="current_date_time_block2"></div>
-
+                <div class="navbar-brand" id="current_date_time_block2"></div>
+                    <div>
+                        <p>г.Брест,Беларусь</p>
+                    </div>
                 <script type="text/javascript">
 
                     setInterval(function () {
@@ -51,7 +50,12 @@
                     }, 1000);
 
                 </script>
-                <p>г.Брест,Беларусь</p>
+            </div>
+            </div>
+            <div class="navbar-brand mb-0 h-100">
+                <a class="navbar-brand" href="/Index">Маршруты</a>
+                <a class="navbar-brand" href="/All_Stops">Остановки</a>
+                <a class="navbar-brand" href="/Sign_in_Sign_up">Войти</a>
             </div>
         </nav>
     </header>
