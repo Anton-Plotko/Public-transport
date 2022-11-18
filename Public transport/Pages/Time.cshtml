@@ -2,6 +2,10 @@
 @using Public_transport.Models
 @model Public_transport.Pages.TimeModel
 @{
+    string[] TimeMonFri1 = Model.TimeMonFri.Split(new string[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+    string[] TimeSaSu1 = Model.TimeSaSu.Split(new string[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+    string[] TimeMonFri2 = Model.TimeMonFri.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+    string[] TimeSaSu2 = Model.TimeSaSu.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
 }
 <div class="text-center">
     @if(@Model.Type=="T")
@@ -12,10 +16,39 @@
     {
         <h1>Автобус № @Model.NameT</h1>
     }
+
+
     <h1>Остановка: @Model.NameS</h1>
     <h2 class="display-6">Расписание с Понедельника по Пятницу!!!</h2>
-    <code>@Model.TimeMonFri</code>
+    @if (@Model.Type == "T")
+    {
+        @foreach (string arr in TimeMonFri1)
+        {
+            <a>@arr</a>
+        }   
+    }
+    else
+    {
+        @foreach (string arr in TimeMonFri2)
+        {
+            <a>@arr</a>
+        }
+    }
     
     <h2 class="display-6">Расписание с Субботы по Воскресенье!!!</h2>
-    <code>@Model.TimeSaSu</code>
+    @if (@Model.Type == "T")
+    {
+        @foreach (string arr in TimeSaSu1)
+        {
+            <a>@arr</a>
+        }
+    }
+    else
+    {
+        @foreach (string arr in TimeSaSu2)
+        {
+            <a>@arr</a>
+        }
+    }
+
 </div>

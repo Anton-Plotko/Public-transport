@@ -29,8 +29,7 @@ namespace Public_transport.Pages
                         TimeSaSu = resalt.TimeSaSu;
                     }
                 }
-            }
-                
+            }    
         }
         private bool FilterStops1(Relationship_between_transports_and_stops stp, int searchingStops)
         {
