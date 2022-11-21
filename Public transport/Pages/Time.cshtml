@@ -13,27 +13,28 @@
 <div class="text-center">
     @if(@Model.Type=="T")
     {
-        <h1>Троллейбус № @Model.NameT</h1>
+        <a class="navbar-brand" href="/Stops?IdTransport=@Model.IDT&NameTransport=@Model.NameT&TypeTransport=@Model.Type">Троллейбус № @Model.NameT</a><br>
     }
     else
     {
-        <h1>Автобус № @Model.NameT</h1>
+        <a class="navbar-brand" href="/Stops?IdTransport=@Model.IDT&NameTransport=@Model.NameT&TypeTransport=@Model.Type">Автобус № @Model.NameT</a><br>
     }
-    <h1>Остановка: @Model.NameS</h1>
+    <a class="navbar-brand" href="/Transport?IdStops=@Model.IDS&NameStop=@Model.NameS">Остановка: @Model.NameS</a>
 
     @if (dayofweek>=6)
     {
         @if (@Model.Type == "T")
         {
+
             try
             {
-                var busTimes = TimeSaSuT
+                var transportTimes = TimeSaSuT
                 .Select(x => DateTime.Parse(x))
                 .ToList();
 
                 var now = DateTime.Now.TimeOfDay;
 
-                var closestTime = (from x in busTimes
+                var closestTime = (from x in transportTimes
                                    where x.TimeOfDay > now
                                    orderby x.TimeOfDay ascending
                                    select x).First();
@@ -51,13 +52,13 @@
         {
             try
             {
-                var busTimes = TimeSaSuA
+                var transportTimes = TimeSaSuA
                 .Select(x => DateTime.Parse(x))
                 .ToList();
 
                 var now = DateTime.Now.TimeOfDay;
 
-                var closestTime = (from x in busTimes
+                var closestTime = (from x in transportTimes
                                     where x.TimeOfDay > now
                                     orderby x.TimeOfDay ascending
                                     select x).First();
@@ -78,13 +79,13 @@
         {
             try
             {
-                var busTimes = TimeMonFriT
+                var transportTimes = TimeMonFriT
                 .Select(x => DateTime.Parse(x))
                 .ToList();
 
                 var now = DateTime.Now.TimeOfDay;
 
-                var closestTime = (from x in busTimes
+                var closestTime = (from x in transportTimes
                                     where x.TimeOfDay > now
                                     orderby x.TimeOfDay ascending
                                     select x).First();
@@ -102,13 +103,13 @@
         {
             try
             {
-                var busTimes = TimeMonFriA
+                var transportTimes = TimeMonFriA
                 .Select(x => DateTime.Parse(x))
                 .ToList();
 
                 var now = DateTime.Now.TimeOfDay;
 
-                var closestTime = (from x in busTimes
+                var closestTime = (from x in transportTimes
                                     where x.TimeOfDay > now
                                     orderby x.TimeOfDay ascending
                                     select x).First();

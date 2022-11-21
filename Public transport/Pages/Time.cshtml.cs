@@ -12,6 +12,8 @@ namespace Public_transport.Pages
         public string? NameT;
         public string? NameS;
         public string? Type;
+        public int IDS;
+        public int IDT;
         public void OnGet(int IdStops,int IdTransport,string NameTransport,string NameStop,string TypeTransport)
         {
             using (Context db = new Context())
@@ -19,6 +21,8 @@ namespace Public_transport.Pages
                 NameT = NameTransport;
                 NameS = NameStop;
                 Type = TypeTransport;
+                IDS = IdStops;
+                IDT = IdTransport;
                 Relationship_between_transports_and_stops[] IdStopsArray = db.Relationships.ToArray();
                 Resalt = (from Stp in IdStopsArray where (FilterStops1(Stp, IdTransport)) select Stp).ToArray();
                 foreach (Relationship_between_transports_and_stops resalt in Resalt)
