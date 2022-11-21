@@ -6,7 +6,35 @@
 }
 <div class="text-center">
     <h2>Остановка: @Model.Name</h2>
-    <h1 class="display-6">Выберите транспорт!</h1>
+    <h2>Ближайшее маршруты</h2>
+    <h2>Троллейбусы</h2>
+    <ul style="list-style: none;">
+        @foreach (PublicTransport Name in Model.ResName)
+        {
+            if (Name.Type == "T")
+            {
+                
+            }
+
+            if (index == 0)
+            {
+                
+            }
+        }
+    </ul>
+    <h2>Автобусы</h2>
+    <ul style="list-style: none;">
+        @foreach (PublicTransport Name in Model.ResName)
+        {
+            if (Name.Type == "A")
+            {
+
+            }
+
+        }
+    </ul>
+    <details>
+    <summary>Все маршруты</summary>
     <h2>Троллейбусы</h2>
     <ul style="list-style: none;"> 
     @foreach (PublicTransport Name in Model.ResName)
@@ -19,7 +47,7 @@
 
         if (index==0)
         {
-            <li>На данной остановке маршрутов нет!</li>
+            <li>На данной остановке маршрутов нет</li>
             break;
         }            
     }
@@ -35,4 +63,5 @@
 
     }
     </ul>
+    </details>
 </div>

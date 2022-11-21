@@ -7,8 +7,8 @@ namespace Public_transport.Pages
     public class TimeModel : PageModel
     {
         public Relationship_between_transports_and_stops[] Resalt = new Relationship_between_transports_and_stops[0];
-        public string? TimeMonFri;
-        public string? TimeSaSu;
+        public string TimeMonFri="";
+        public string TimeSaSu="";
         public string? NameT;
         public string? NameS;
         public string? Type;
