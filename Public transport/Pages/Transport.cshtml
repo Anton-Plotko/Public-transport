@@ -3,36 +3,141 @@
 @model Public_transport.Pages.TransportModel
 @{
     int index = 0;
+    int value1 = 0;
+    int value2 = 0;
+    int dayofweek = (int)DateTime.Now.DayOfWeek;
+    List<PublicTransport> NAME = new List<PublicTransport>();
+    foreach(PublicTransport name in Model.ResName)
+    {
+        NAME.Add(name);
+    }
 }
+
 <div class="text-center">
     <h2>Остановка: @Model.Name</h2>
     <h2>Ближайшие маршруты</h2>
-    <h2>Троллейбусы</h2>
-    <ul style="list-style: none;">
-        @foreach (PublicTransport Name in Model.ResName)
+        <h2>Троллейбусы</h2>
+        @foreach (Relationship_between_transports_and_stops Time in Model.ResId)
         {
-            if (Name.Type == "T")
+            @if(NAME[value1].Type=="T")
             {
-                
+                if(dayofweek>=6)
+                {
+                    string[] TimeSaSu = Time.TimeSaSu.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    try
+                    {
+                        var transportTimes = TimeSaSu
+                        .Select(x => DateTime.Parse(x))
+                        .ToList();
+
+                        var now = DateTime.Now.TimeOfDay;
+
+                        var closestTime = (from x in transportTimes
+                                            where x.TimeOfDay > now
+                                            orderby x.TimeOfDay ascending
+                                            select x).First();
+                        string time = closestTime.ToString("HH:mm");
+                        <h4>@NAME[value1].Name (@time)</h4><br>
+                    }
+                    catch
+                    {
+                        <h4>@NAME[value1].Name (@TimeSaSu.First())</h4><br>
+                    }
+                }
+                else
+                {
+                    string[] TimeMonFri = Time.TimeMonFri.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    try
+                    {
+                        var transportTimes = TimeMonFri
+                        .Select(x => DateTime.Parse(x))
+                        .ToList();
+
+                        var now = DateTime.Now.TimeOfDay;
+
+                        var closestTime = (from x in transportTimes
+                                            where x.TimeOfDay > now
+                                            orderby x.TimeOfDay ascending
+                                            select x).First();
+                        string time = closestTime.ToString("HH:mm");
+                        <h4>@NAME[value1].Name (@time)</h4><br>
+                    }
+                    catch
+                    {
+                        <h4>@NAME[value1].Name (@TimeMonFri.First())</h4><br>
+                    }
+                }
+                value1++;
             }
 
-            if (index == 0)
+            if(value1==0)
             {
-                
+                <a>На данной остановке маршрутов нет</a>
+                break;
             }
         }
-    </ul>
-    <h2>Автобусы</h2>
-    <ul style="list-style: none;">
-        @foreach (PublicTransport Name in Model.ResName)
+        <h2>Автобусы</h2>
+        @foreach (Relationship_between_transports_and_stops Time in Model.ResId)
         {
-            if (Name.Type == "A")
+            @if(NAME[value2].Type=="A")
             {
+                if (dayofweek >= 6)
+                {
+                    string[] TimeSaSu = Time.TimeSaSu.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    try
+                    {
+                        var transportTimes = TimeSaSu
+                        .Select(x => DateTime.Parse(x))
+                        .ToList();
 
+                        var now = DateTime.Now.TimeOfDay;
+
+                        var closestTime = (from x in transportTimes
+                                           where x.TimeOfDay > now
+                                           orderby x.TimeOfDay ascending
+                                           select x).First();
+                        string time = closestTime.ToString("HH:mm");
+                        <h4>@NAME[value2].Name (@time)</h4>
+
+                        <br>
+                    }
+                    catch
+                    {
+                        <h4>@NAME[value2].Name (@TimeSaSu.First())</h4>
+
+                        <br>
+                    }
+                }
+                else
+                {
+                    string[] TimeMonFri = Time.TimeMonFri.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    try
+                    {
+                        var transportTimes = TimeMonFri
+                        .Select(x => DateTime.Parse(x))
+                        .ToList();
+
+                        var now = DateTime.Now.TimeOfDay;
+
+                        var closestTime = (from x in transportTimes
+                                           where x.TimeOfDay > now
+                                           orderby x.TimeOfDay ascending
+                                           select x).First();
+                        string time = closestTime.ToString("HH:mm");
+                        <h4>@NAME[value2].Name (@time)</h4>
+
+                        <br>
+                    }
+                    catch
+                    {
+                        <h4>@NAME[value2].Name (@TimeMonFri.First())</h4>
+
+                        <br>
+                    }
+                }
             }
-
+            value2++;
         }
-    </ul>
     <details>
     <summary>Все маршруты</summary>
     <h2>Троллейбусы</h2>
@@ -55,13 +160,13 @@
     <h2>Автобусы</h2>
     <ul style="list-style: none;">
         @foreach (PublicTransport Name in Model.ResName)
-    {
-        if (Name.Type == "A")
         {
+            if (Name.Type == "A")
+            {
                 <li><a class="navbar-brand" href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id&NameTransport=@Name.Name&NameStop=@Model.Name&TypeTransport=@Name.Type">@Name.Name</a></li>
-        }
+            }
 
-    }
+        }
     </ul>
     </details>
 </div>
