@@ -5,8 +5,11 @@
     int index = 0;
     int value1 = 0;
     int value2 = 0;
+    int namber = 0;
     int dayofweek = (int)DateTime.Now.DayOfWeek;
     List<PublicTransport> NAME = new List<PublicTransport>();
+    List<string> TIMEt = new List<string>();
+    List<string> TIMEa = new List<string>();
     foreach(PublicTransport name in Model.ResName)
     {
         NAME.Add(name);
@@ -37,11 +40,11 @@
                                             orderby x.TimeOfDay ascending
                                             select x).First();
                         string time = closestTime.ToString("HH:mm");
-                        <h4>@NAME[value1].Name (@time)</h4><br>
+                        TIMEt.Add(time);
                     }
                     catch
                     {
-                        <h4>@NAME[value1].Name (@TimeSaSu.First())</h4><br>
+                        TIMEt.Add(TimeSaSu.First());
                     }
                 }
                 else
@@ -60,11 +63,11 @@
                                             orderby x.TimeOfDay ascending
                                             select x).First();
                         string time = closestTime.ToString("HH:mm");
-                        <h4>@NAME[value1].Name (@time)</h4><br>
+                        TIMEt.Add(time);
                     }
                     catch
-                    {
-                        <h4>@NAME[value1].Name (@TimeMonFri.First())</h4><br>
+                    {   
+                        TIMEt.Add(TimeMonFri.First()); 
                     }
                 }
                 value1++;
@@ -74,6 +77,19 @@
             {
                 <a>На данной остановке маршрутов нет</a>
                 break;
+            }
+            
+        }
+        @{
+            Dictionary<string, string> keysT = new Dictionary<string, string>();
+            for (var i = 0; i < TIMEt.Count; i++)
+            {
+                keysT.Add(NAME[namber].Name, TIMEt[i]);
+                namber++;
+            }
+            foreach(var item in keysT.OrderBy(x=>x.Value))
+            {
+                <h4>@item.Key (@item.Value)</h4>
             }
         }
         <h2>Автобусы</h2>
@@ -97,15 +113,11 @@
                                            orderby x.TimeOfDay ascending
                                            select x).First();
                         string time = closestTime.ToString("HH:mm");
-                        <h4>@NAME[value2].Name (@time)</h4>
-
-                        <br>
+                        TIMEa.Add(time);
                     }
                     catch
                     {
-                        <h4>@NAME[value2].Name (@TimeSaSu.First())</h4>
-
-                        <br>
+                        TIMEa.Add(TimeSaSu.First());
                     }
                 }
                 else
@@ -124,19 +136,28 @@
                                            orderby x.TimeOfDay ascending
                                            select x).First();
                         string time = closestTime.ToString("HH:mm");
-                        <h4>@NAME[value2].Name (@time)</h4>
-
-                        <br>
+                        TIMEa.Add(time);
                     }
                     catch
                     {
-                        <h4>@NAME[value2].Name (@TimeMonFri.First())</h4>
-
-                        <br>
+                        TIMEa.Add(TimeMonFri.First());
                     }
                 }
             }
             value2++;
+            
+        }
+        @{
+            Dictionary<string, string> keysA = new Dictionary<string, string>();
+            for (var i = 0; i < TIMEa.Count; i++)
+            {
+            keysA.Add(NAME[namber].Name, TIMEa[i]);
+                namber++;
+            }
+            foreach(var item in keysA.OrderBy(x=>x.Value))
+            {
+                <h4>@item.Key (@item.Value)</h4>
+            }
         }
     <details>
     <summary>Все маршруты</summary>

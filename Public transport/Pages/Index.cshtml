@@ -4,8 +4,20 @@
 @{
     ViewData["Title"] = "";
 }
-
-<div class="text-center">
-    <a class="navbar-brand" href="/Trolleybuses?Type=T">Троллейбусы</a>    
-    <a class="navbar-brand" href="/Buses?Type=A">Автобусы</a>
-</div>
+<ul>
+    <li>
+        <a href="/Trolleybuses?Type=T">
+            <i class="fa fa-facebook"></i>
+            <span>ТРОЛЛЕЙБУСЫ</span>
+        </a>
+    </li>
+    <li>
+        <a href="/Buses?Type=A">
+            <i class="fa fa-google-plus"></i>
+            <span>АВТОБУСЫ</span>
+        </a>
+    </li>
+</ul>
+@section Styles{
+    <link rel="stylesheet" href="~/css/IndexStyles.css"/>
+}
