@@ -4,19 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] Рассписание общественного транспорта г.Брест,Беларусь</title>
-    @await RenderSectionAsync("Styles", required: false)
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @await RenderSectionAsync("IndexStyle", required: false)
+    @await RenderSectionAsync("TrolleybusesStyle", required: false)
+    @await RenderSectionAsync("BusesStyle", required: false)
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
     @*<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />*@
-    <link rel="stylesheet" href="~/Public_transport.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/LayoutStyle.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <div>
-            <a href="/Index">Маршруты</a>
-            <a href="/All_Stops">Остановки</a>
-            <div class="animation start-home"></div>
-        </div>
-            <div>
+        <div class="bar-line">
+            <div class="bar-line__left">
+            <a class="gradient-button" href="/Index">Маршруты</a>
+            <a class="gradient-button" href="/All_Stops">Остановки</a>
+            </div>
+        <div class="bar-line__right">
             <div id="current_date_time_block"></div>
             <script type="text/javascript">
 
@@ -38,11 +40,11 @@
                     var seconds = zero_first_format(current_datetime.getSeconds());
                         
                        
-                    return new Date().toLocaleString('ru-ru', { weekday: 'long', }) + " " +day + "." + month + "." + year + " " + hours + ":" + minutes + ":" + seconds;
+                    return new Date().toLocaleString('ru-ru', { weekday: 'long'}) + " " +day + "." + month + "." + year + " " + hours + ":" + minutes + ":" + seconds;
                 }
             </script>
-                <div>
-                    <div id="current_date_time_block2"></div>
+                <div class="bar-line__right__time">
+                <div class="text" id="current_date_time_block2"></div>
                 </div>
             <script type="text/javascript">
 
@@ -51,6 +53,7 @@
                 }, 1000);
 
             </script>
+        </div>
         </div>
     </header>
     <div>

@@ -1,0 +1,57 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    height: 200px;
+    background: #222022;
+}
+.bar-line {
+    display: flex;
+    padding: 20px;
+}
+
+.bar-line__left {
+    flex: 1;
+}
+
+.bar-line__right {
+    flex: 1;
+    margin-left: 20px;
+    text-align: end;
+    font-size: 170%;
+    color: white;
+}
+.bar-line__right__time {
+  line-height:70px;
+}
+@font-face {
+    font-family: 'Crimson Text';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Crimson Text'), url('/fonts/CrimsonText-Bold.woff2') format('woff2'), url('/fonts/CrimsonText-Bold.woff') format('woff'), url('/fonts/CrimsonText-Bold.ttf') format('ttf'), url('/fonts/CrimsonText-Bold.eot') format('eot');
+}
+
+.text {
+    font-family: 'Crimson Text';
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.gradient-button {
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+    padding: 20px 30px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-image: linear-gradient(to right, #6F2232 0%, #222022 51%, #6F2232 100%);
+    background-size: 200% auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    transition: .5s;
+}
+
+    .gradient-button:hover {
+        background-position: right center;
+    }
+
