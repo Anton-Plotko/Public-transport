@@ -10,17 +10,17 @@
     
 }
 
-<div class="text-center">
+<div class="center">
     @if(@Model.Type=="T")
     {
-        <a class="navbar-brand" href="/Stops?IdTransport=@Model.IDT&NameTransport=@Model.NameT&TypeTransport=@Model.Type">Троллейбус № @Model.NameT</a><br>
+        <a class="gradient-button" href="/Stops?IdTransport=@Model.IDT&NameTransport=@Model.NameT&TypeTransport=@Model.Type">Троллейбус № @Model.NameT</a><br>
     }
     else
     {
-        <a class="navbar-brand" href="/Stops?IdTransport=@Model.IDT&NameTransport=@Model.NameT&TypeTransport=@Model.Type">Автобус № @Model.NameT</a><br>
+        <a class="gradient-button" href="/Stops?IdTransport=@Model.IDT&NameTransport=@Model.NameT&TypeTransport=@Model.Type">Автобус № @Model.NameT</a><br>
     }
-    <a class="navbar-brand" href="/Transport?IdStops=@Model.IDS&NameStop=@Model.NameS">Остановка: @Model.NameS</a>
-
+    <a class="gradient-button" href="/Transport?IdStops=@Model.IDS&NameStop=@Model.NameS">Остановка: @Model.NameS</a>
+    <div class="TextTime3">
     @if (dayofweek>=6)
     {
         @if (@Model.Type == "T")
@@ -39,13 +39,13 @@
                                    orderby x.TimeOfDay ascending
                                    select x).First();
                 string time = closestTime.ToString("HH:mm");
-                <h4 class="display-6">Ближайшее время маршрута</h4>
-                <a>@time</a>
+                <h4 class="TextTime2">Ближайшее время маршрута</h4>
+                <a class="TextTime1">@time</a>
             }
             catch
             {
-                <h4 class="display-6">Ближайшее время маршрута</h4>
-                <a>@TimeSaSuT.First()</a>
+                <h4 class="TextTime2">Ближайшее время маршрута</h4>
+                <a class="TextTime1">@TimeSaSuT.First()</a>
             }
         }
         else
@@ -63,13 +63,13 @@
                                     orderby x.TimeOfDay ascending
                                     select x).First();
                 string time = closestTime.ToString("HH:mm");
-                <h4 class="display-6">Ближайшее время маршрута</h4>
-                <a>@time</a>
+                <h4 class="TextTime2">Ближайшее время маршрута</h4>
+                <a class="TextTime1">@time</a>
             }
             catch
             {
-                <h4 class="display-6">Ближайшее время маршрута</h4>
-                <a>@TimeSaSuA.First()</a>
+                <h4 class="TextTime2">Ближайшее время маршрута</h4>
+                <a class="TextTime1">@TimeSaSuA.First()</a>
             }
         }
     }
@@ -90,13 +90,13 @@
                                     orderby x.TimeOfDay ascending
                                     select x).First();
                 string time = closestTime.ToString("HH:mm");
-                <h4 class="display-6">Ближайшее время маршрута</h4>
-                <a>@time</a>
+                <h4 class="TextTime2">Ближайшее время маршрута</h4>
+                <a class="TextTime1">@time</a>
             }
             catch
             {
-                <h4 class="display-6">Ближайшее время маршрута</h4>
-                <a>@TimeMonFriT.First()</a>
+                <h4 class="TextTime2">Ближайшее время маршрута</h4>
+                <a class="TextTime1">@TimeMonFriT.First()</a>
             }
         }
         else
@@ -114,50 +114,55 @@
                                     orderby x.TimeOfDay ascending
                                     select x).First();
                 string time = closestTime.ToString("HH:mm");
-                <h4 class="display-6">Ближайшее время маршрута</h4>
-                <a>@time</a>
+                <h4 class="TextTime2">Ближайшее время маршрута</h4>
+                <a class="TextTime1">@time</a>
             }
             catch
             {
-                <h4 class="display-6">Ближайшее время маршрута</h4>
-                <a>@TimeMonFriA.First()</a>
+                <h4 class="TextTime2">Ближайшее время маршрута</h4>
+                <a class="TextTime1">@TimeMonFriA.First()</a>
             }
         }
     }
+    </div>
 
-<details>
-    <summary>Полное расписание</summary>
-    <h2 class="display-6">Расписание с Понедельника по Пятницу!!!</h2>
+    <details class="time">
+    <summary style="color:white">Полное расписание</summary>
+    <div class="TextTime">
+    <h2 class="TextTime2">Расписание с Понедельника по Пятницу!!!</h2>
     @if (@Model.Type == "T")
     {
         @foreach (string arr in TimeMonFriT)
         {
-            <a>@arr</a>
+            <a class="TextTime2">@arr</a>
         }   
     }
     else
     {
         @foreach (string arr in TimeMonFriA)
         {
-            <a>@arr</a>
+            <a class="TextTime2">@arr</a>
         }
     }
-    
-    <h2 class="display-6">Расписание с Субботы по Воскресенье!!!</h2>
+
+        <h2 class="TextTime2">Расписание с Субботы по Воскресенье!!!</h2>
     @if (@Model.Type == "T")
     {
         @foreach (string arr in TimeSaSuT)
         {
-            <a>@arr</a>
+            <a class="TextTime2">@arr</a>
         }
     }
     else
     {
         @foreach (string arr in TimeSaSuA)
         {
-            <a>@arr</a>
+            <a class="TextTime2">@arr</a>
         }
     }
-
+    </div>
 </details>
 </div>
+@section TimeStyle {
+    <link rel="stylesheet" href="~/css/TimeStyle.css" />
+}

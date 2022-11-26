@@ -4,11 +4,11 @@
     int i = 1;
     int a = 1;
 }
-<div class="text-center">
+<div class="center">
     <ul style="list-style: none;">
     @foreach (PublicTransport Troll in Model.ResTroll)
     {
-            <li><a href="/Stops?IdTransport=@a&NameTransport=@Troll.Name&TypeTransport=@Troll.Type">@Troll.Name</a></li>
+            <li><a class="gradient-button" href="/Stops?IdTransport=@a&NameTransport=@Troll.Name&TypeTransport=@Troll.Type">@Troll.Name</a></li>
         if (i % 2 == 0)
             {<br>
             }

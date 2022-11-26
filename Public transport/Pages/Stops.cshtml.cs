@@ -8,7 +8,7 @@ namespace Public_transport.Pages
 {
     public class StopsModel : PageModel
     {
-        public Relationship_between_transports_and_stops[] ResIdStops = new Relationship_between_transports_and_stops[0];
+        public RelationshipBetweenTransportsAndStops[] ResIdStops = new RelationshipBetweenTransportsAndStops[0];
         public List<Stop> ResNameStops = new List<Stop>();
         public string? Name; 
         public string? Type; 
@@ -18,10 +18,10 @@ namespace Public_transport.Pages
             {
                 Name=NameTransport;
                 Type=TypeTransport;
-                Relationship_between_transports_and_stops[] IdStopsArray = db.Relationships.ToArray();
+                RelationshipBetweenTransportsAndStops[] IdStopsArray = db.Relationships.ToArray();
                 ResIdStops = (from Stp in IdStopsArray where (FilterStops1(Stp, IdTransport)) select Stp).ToArray();
                 Stop[] StopArray = db.Stops.ToArray();
-                foreach (Relationship_between_transports_and_stops Stops in ResIdStops)
+                foreach (RelationshipBetweenTransportsAndStops Stops in ResIdStops)
                 {
                     foreach (Stop stop in StopArray)
                     {
@@ -36,7 +36,7 @@ namespace Public_transport.Pages
                 
             }
         }
-        private bool FilterStops1(Relationship_between_transports_and_stops stp, int searchingStops)
+        private bool FilterStops1(RelationshipBetweenTransportsAndStops stp, int searchingStops)
         {
             bool isFinded = stp.IdTransport.Equals(searchingStops);
             return isFinded;

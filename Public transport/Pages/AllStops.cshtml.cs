@@ -4,7 +4,7 @@ using Public_transport.Models;
 
 namespace Public_transport.Pages
 {
-    public class All_StopsModel : PageModel
+    public class AllStopsModel : PageModel
     {
         public Stop[] ResAllStops = new Stop[0];
         public void OnGet()

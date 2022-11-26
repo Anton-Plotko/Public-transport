@@ -1,0 +1,34 @@
+﻿@page
+@using Public_transport.Models
+@model Public_transport.Pages.AllStopsModel
+@{
+    int namber = 1;
+}
+<head>
+    <script src="~/lib/list.js/list.js"></script>
+    <link rel="stylesheet" type="text/css" href="list.css"/>
+</head>
+<body>
+<div class="center">
+    <div id="users">
+        <input style=" font-size:150% " class="search" placeholder="Искать здесь..." type="search" />
+        <ul class="list" style="list-style: none;">
+            @foreach (Stop Stop in Model.ResAllStops)
+            {
+                <li class="gradient-button"><a class="name" href="/Transport?IdStops=@namber&NameStop=@Stop.Name">@Stop.Name</a></li>
+                ++namber;
+            }
+        </ul>
+    </div>
+    <script>
+        var options = {
+            valueNames: ['name', 'born']
+        };
+
+        var userList = new List('users', options);
+        </script> 
+</div>
+</body>
+@section AllStopsStyle {
+    <link rel="stylesheet" href="~/css/AllStopsStyle.css" />
+}

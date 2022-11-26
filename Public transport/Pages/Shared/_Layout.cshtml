@@ -7,6 +7,10 @@
     @await RenderSectionAsync("IndexStyle", required: false)
     @await RenderSectionAsync("TrolleybusesStyle", required: false)
     @await RenderSectionAsync("BusesStyle", required: false)
+    @await RenderSectionAsync("StopsStyle", required: false)
+    @await RenderSectionAsync("TimeStyle", required: false)
+    @await RenderSectionAsync("TransportStyle", required: false)
+    @await RenderSectionAsync("AllStopsStyle", required: false)
     @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
     @*<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />*@
     <link rel="stylesheet" href="~/css/LayoutStyle.css" asp-append-version="true" />
@@ -16,7 +20,7 @@
         <div class="bar-line">
             <div class="bar-line__left">
             <a class="gradient-button" href="/Index">Маршруты</a>
-            <a class="gradient-button" href="/All_Stops">Остановки</a>
+            <a class="gradient-button" href="/AllStops">Остановки</a>
             </div>
         <div class="bar-line__right">
             <div id="current_date_time_block"></div>

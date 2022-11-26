@@ -3,6 +3,9 @@
 .center {
     text-align: center;
 }
+h1, h2 {
+    color: #fff;
+}
 .gradient-button {
     text-decoration: none;
     display: inline-block;

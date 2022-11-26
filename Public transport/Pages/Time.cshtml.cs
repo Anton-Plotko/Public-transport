@@ -6,7 +6,7 @@ namespace Public_transport.Pages
 {
     public class TimeModel : PageModel
     {
-        public Relationship_between_transports_and_stops[] Resalt = new Relationship_between_transports_and_stops[0];
+        public RelationshipBetweenTransportsAndStops[] Resalt = new RelationshipBetweenTransportsAndStops[0];
         public string TimeMonFri="";
         public string TimeSaSu="";
         public string? NameT;
@@ -23,9 +23,9 @@ namespace Public_transport.Pages
                 Type = TypeTransport;
                 IDS = IdStops;
                 IDT = IdTransport;
-                Relationship_between_transports_and_stops[] IdStopsArray = db.Relationships.ToArray();
+                RelationshipBetweenTransportsAndStops[] IdStopsArray = db.Relationships.ToArray();
                 Resalt = (from Stp in IdStopsArray where (FilterStops1(Stp, IdTransport)) select Stp).ToArray();
-                foreach (Relationship_between_transports_and_stops resalt in Resalt)
+                foreach (RelationshipBetweenTransportsAndStops resalt in Resalt)
                 {
                     if (resalt.IdTransport==IdTransport&&resalt.IdStops==IdStops)
                     {
@@ -35,7 +35,7 @@ namespace Public_transport.Pages
                 }
             }    
         }
-        private bool FilterStops1(Relationship_between_transports_and_stops stp, int searchingStops)
+        private bool FilterStops1(RelationshipBetweenTransportsAndStops stp, int searchingStops)
         {
             bool isFinded = stp.IdTransport.Equals(searchingStops);
             return isFinded;

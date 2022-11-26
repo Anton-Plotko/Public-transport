@@ -16,11 +16,11 @@
     }
 }
 
-<div class="text-center">
+<div>
     <h2>Остановка: @Model.Name</h2>
     <h2>Ближайшие маршруты</h2>
         <h2>Троллейбусы</h2>
-        @foreach (Relationship_between_transports_and_stops Time in Model.ResId)
+    @foreach (RelationshipBetweenTransportsAndStops Time in Model.ResId)
         {
             @if(NAME[value1].Type=="T")
             {
@@ -93,7 +93,7 @@
             }
         }
         <h2>Автобусы</h2>
-        @foreach (Relationship_between_transports_and_stops Time in Model.ResId)
+    @foreach (RelationshipBetweenTransportsAndStops Time in Model.ResId)
         {
             @if(NAME[value2].Type=="A")
             {
@@ -167,7 +167,7 @@
     {
         if (Name.Type == "T")
         {
-            <li><a class="navbar-brand" href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id&NameTransport=@Name.Name&NameStop=@Model.Name&TypeTransport=@Name.Type">@Name.Name</a></li>
+            <li><a href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id&NameTransport=@Name.Name&NameStop=@Model.Name&TypeTransport=@Name.Type">@Name.Name</a></li>
             ++index;
         }
 
@@ -184,10 +184,13 @@
         {
             if (Name.Type == "A")
             {
-                <li><a class="navbar-brand" href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id&NameTransport=@Name.Name&NameStop=@Model.Name&TypeTransport=@Name.Type">@Name.Name</a></li>
+                <li><a href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id&NameTransport=@Name.Name&NameStop=@Model.Name&TypeTransport=@Name.Type">@Name.Name</a></li>
             }
 
         }
     </ul>
     </details>
 </div>
+@section TransportStyle {
+    <link rel="stylesheet" href="~/css/TransportStyle.css" />
+}

@@ -11,7 +11,7 @@ namespace Public_transport.Models
     {   
         public DbSet<PublicTransport> Transports { get; set; }
         public DbSet<Stop> Stops { get; set; }
-        public DbSet<Relationship_between_transports_and_stops> Relationships { get; set; }
+        public DbSet<RelationshipBetweenTransportsAndStops> Relationships { get; set; }
 
         public Context()
         {
