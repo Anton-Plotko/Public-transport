@@ -24,7 +24,7 @@
         {
             @if(NAME[value1].Type=="T")
             {
-                if(dayofweek>=6)
+                if(dayofweek==6||dayofweek==0)
                 {
                     string[] TimeSaSu = Time.TimeSaSu.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                     try
@@ -97,7 +97,7 @@
         {
             @if(NAME[value2].Type=="A")
             {
-                if (dayofweek >= 6)
+                if (dayofweek==6||dayofweek==0)
                 {
                     string[] TimeSaSu = Time.TimeSaSu.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                     try
