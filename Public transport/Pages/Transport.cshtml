@@ -16,7 +16,7 @@
     }
 }
 
-<div>
+<div class="Text">
     <h2>Остановка: @Model.Name</h2>
     <h2>Ближайшие маршруты</h2>
         <h2>Троллейбусы</h2>
@@ -159,6 +159,8 @@
                 <h4>@item.Key (@item.Value)</h4>
             }
         }
+</div>
+<div class="Text">
     <details>
     <summary>Все маршруты</summary>
     <h2>Троллейбусы</h2>
@@ -167,7 +169,7 @@
     {
         if (Name.Type == "T")
         {
-            <li><a href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id&NameTransport=@Name.Name&NameStop=@Model.Name&TypeTransport=@Name.Type">@Name.Name</a></li>
+            <li><a class="gradient-button" href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id&NameTransport=@Name.Name&NameStop=@Model.Name&TypeTransport=@Name.Type">@Name.Name</a></li>
             ++index;
         }
 
@@ -184,7 +186,7 @@
         {
             if (Name.Type == "A")
             {
-                <li><a href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id&NameTransport=@Name.Name&NameStop=@Model.Name&TypeTransport=@Name.Type">@Name.Name</a></li>
+                    <li><a class="gradient-button" href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id&NameTransport=@Name.Name&NameStop=@Model.Name&TypeTransport=@Name.Type">@Name.Name</a></li>
             }
 
         }

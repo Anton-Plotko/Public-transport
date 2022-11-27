@@ -79,27 +79,27 @@ ul {
         }
 
         ul li:hover:nth-child(1) a {
-            background-image: linear-gradient(to right, #6F2232 0%, #222022 100%);
+            background-image: linear-gradient(to right, #006400 0%, #222022 100%);
         }
 
             ul li:hover:nth-child(1) a:before {
-                background: #6F2232
+                background: #006400
             }
 
             ul li:hover:nth-child(1) a:after {
-                background-image: linear-gradient(to right, #6F2232 0%, #222022 100%);
+                background-image: linear-gradient(to right, #006400 0%, #222022 100%);
             }
 
         ul li:hover:nth-child(2) a {
-            background-image: linear-gradient(to right, #6F2232 0%, #222022 100%);
+            background-image: linear-gradient(to right, #006400 0%, #222022 100%);
         }
 
             ul li:hover:nth-child(2) a:before {
-                background: #6F2232;
+                background: #006400;
             }
 
             ul li:hover:nth-child(2) a:after {
-                background-image: linear-gradient(to right, #6F2232 0%, #222022 100%);
+                background-image: linear-gradient(to right, #006400 0%, #222022 100%);
             }
 
 

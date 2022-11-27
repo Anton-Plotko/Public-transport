@@ -7,7 +7,6 @@
     string[] TimeMonFriA = Model.TimeMonFri.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
     string[] TimeSaSuA = Model.TimeSaSu.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
     int dayofweek = (int)DateTime.Now.DayOfWeek;
-    
 }
 
 <div class="center">
@@ -21,7 +20,7 @@
     }
     <a class="gradient-button" href="/Transport?IdStops=@Model.IDS&NameStop=@Model.NameS">Остановка: @Model.NameS</a>
     <div class="TextTime3">
-    @if (dayofweek>=6)
+    @if (dayofweek==6||dayofweek==0)
     {
         @if (@Model.Type == "T")
         {
