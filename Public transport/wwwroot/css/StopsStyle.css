@@ -16,7 +16,7 @@ h1, h2 {
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
-    background-image: linear-gradient(to right, #006400 0%, #222022 51%, #006400 100%);
+    background-image: linear-gradient(to right, #006400 0%, #0e0d0d 51%, #006400 100%);
     background-size: 200% auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, .1);
     transition: .5s;

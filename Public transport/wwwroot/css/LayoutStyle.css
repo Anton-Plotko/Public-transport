@@ -36,7 +36,7 @@
     font-weight: bold;
     text-transform: capitalize;
 }
-.gradient-button {
+.button {
     text-decoration: none;
     display: inline-block;
     color: white;
@@ -52,7 +52,7 @@
     transition: .5s;
 }
 
-    .gradient-button:hover {
+    .button:hover {
         background-position: right center;
     }
 

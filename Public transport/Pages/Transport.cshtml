@@ -17,8 +17,8 @@
 }
 
 <div class="Text">
-    <h2>Остановка: @Model.Name</h2>
-    <h2>Ближайшие маршруты</h2>
+    <h1>Остановка: @Model.Name</h1>
+    <h1>Ближайшие маршруты</h1>
         <h2>Троллейбусы</h2>
     @foreach (RelationshipBetweenTransportsAndStops Time in Model.ResId)
         {
@@ -89,7 +89,8 @@
             }
             foreach(var item in keysT.OrderBy(x=>x.Value))
             {
-                <h4>@item.Key (@item.Value)</h4>
+                string[] NameArray = item.Key.Split(new string[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
+                <h3><span style="font-size: 150%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">@NameArray.First()</span> @NameArray.Last() (@item.Value)</h3>
             }
         }
         <h2>Автобусы</h2>
@@ -156,7 +157,8 @@
             }
             foreach(var item in keysA.OrderBy(x=>x.Value))
             {
-                <h4>@item.Key (@item.Value)</h4>
+                string[] NameArray = item.Key.Split(new string[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
+                <h3><span style="font-size: 150%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">@NameArray.First()</span> @NameArray.Last() (@item.Value)</h3>
             }
         }
 </div>
@@ -169,7 +171,8 @@
     {
         if (Name.Type == "T")
         {
-            <li><a class="gradient-button" href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id&NameTransport=@Name.Name&NameStop=@Model.Name&TypeTransport=@Name.Type">@Name.Name</a></li>
+            string[] NameArray = Name.Name.Split(new string[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
+            <li><a class="gradient-button" href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id&NameTransport=@Name.Name&NameStop=@Model.Name&TypeTransport=@Name.Type"><span style="font-size: 200%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">@NameArray.First()</span> @NameArray.Last()</a></li>
             ++index;
         }
 
@@ -186,7 +189,8 @@
         {
             if (Name.Type == "A")
             {
-                    <li><a class="gradient-button" href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id&NameTransport=@Name.Name&NameStop=@Model.Name&TypeTransport=@Name.Type">@Name.Name</a></li>
+                string[] NameArray = Name.Name.Split(new string[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
+                <li><a class="gradient-button" href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id&NameTransport=@Name.Name&NameStop=@Model.Name&TypeTransport=@Name.Type"><span style="font-size: 200%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">@NameArray.First()</span> @NameArray.Last()</a></li>
             }
 
         }

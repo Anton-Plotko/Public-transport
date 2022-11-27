@@ -9,7 +9,12 @@
     <ul style="list-style: none;">
     @foreach (PublicTransport Bus in Model.ResBus)
     {
-            <li><a class="gradient-button" href="/Stops?IdTransport=@a&NameTransport=@Bus.Name&TypeTransport=@Bus.Type">@Bus.Name</a></li>
+            string[] NameArray= Bus.Name.Split(new string[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
+            <li>
+                <a class="gradient-button" href="/Stops?IdTransport=@a&NameTransport=@Bus.Name&TypeTransport=@Bus.Type">
+                    <span style="font-size: 200%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">@NameArray.First()</span> @NameArray.Last()
+                </a>
+            </li>
         if(i%2==0)
             {<br>
             }
