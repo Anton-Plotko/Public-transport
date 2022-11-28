@@ -5,17 +5,20 @@
     int idTransport = 1;
 }
 <div class="center">
-    <ul style="list-style: none;">
     @foreach (PublicTransport Troll in Model.ResTroll)
     {
-            <li><a class="gradient-button" href="/Stops?IdTransport=@idTransport&NameTransport=@Troll.Name&TypeTransport=@Troll.Type">@Troll.Name</a></li>
-            if (indent % 2 == 0)
-            {<br>
-            }
-            ++indent;
-            ++idTransport;
+        if (indent % 2 != 0)
+        {
+            <a class="gradient-button1" href="/Stops?IdTransport=@idTransport&NameTransport=@Troll.Name&TypeTransport=@Troll.Type">@Troll.Name</a>
         }
-    </ul>
+        if (indent % 2 == 0)
+        {
+            <a class="gradient-button2" href="/Stops?IdTransport=@idTransport&NameTransport=@Troll.Name&TypeTransport=@Troll.Type">@Troll.Name</a>
+            <br>
+        }
+        ++indent;
+        ++idTransport;
+    }
 </div>
 @section TrolleybusesStyle {
     <link rel="stylesheet" href="~/css/TrolleybusesStyle.css" />
