@@ -22,19 +22,13 @@
     text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #83ff00, 0 0 82px #83ff00, 0 0 92px #83ff00, 0 0 102px #83ff00, 0 0 151px #83ff00;
 }
 .bar-line__right__time {
-  line-height:70px;
+    line-height: 70px;
 }
-@font-face {
-    font-family: 'Crimson Text';
-    font-style: normal;
-    font-weight: bold;
-    src: local('Crimson Text'), url('/fonts/CrimsonText-Bold.woff2') format('woff2'), url('/fonts/CrimsonText-Bold.woff') format('woff'), url('/fonts/CrimsonText-Bold.ttf') format('ttf'), url('/fonts/CrimsonText-Bold.eot') format('eot');
-}
-
 .text {
     font-family: 'Crimson Text';
-    font-weight: bold;
     text-transform: capitalize;
+    font-style:oblique;
+    font-weight:100;
 }
 .button {
     text-decoration: none;

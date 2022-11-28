@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Public_transport.Models;
-using System.Numerics;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace Public_transport.Pages
 {

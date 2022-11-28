@@ -1,19 +1,19 @@
 ﻿@page
 @model Public_transport.Pages.TrolleybusesModel
 @{
-    int i = 1;
-    int a = 1;
+    int indent = 1;
+    int idTransport = 1;
 }
 <div class="center">
     <ul style="list-style: none;">
     @foreach (PublicTransport Troll in Model.ResTroll)
     {
-            <li><a class="gradient-button" href="/Stops?IdTransport=@a&NameTransport=@Troll.Name&TypeTransport=@Troll.Type">@Troll.Name</a></li>
-        if (i % 2 == 0)
+            <li><a class="gradient-button" href="/Stops?IdTransport=@idTransport&NameTransport=@Troll.Name&TypeTransport=@Troll.Type">@Troll.Name</a></li>
+            if (indent % 2 == 0)
             {<br>
             }
-            ++i;
-            ++a;
+            ++indent;
+            ++idTransport;
         }
     </ul>
 </div>

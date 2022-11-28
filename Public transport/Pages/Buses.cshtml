@@ -1,8 +1,8 @@
 ﻿@page
 @model Public_transport.Pages.BusesModel
 @{
-    int i = 1;
-    int a = 17;
+    int indent = 1;
+    int idTransport = 17;
 }
 
 <div class="center">
@@ -11,15 +11,15 @@
     {
             string[] NameArray= Bus.Name.Split(new string[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
             <li>
-                <a class="gradient-button" href="/Stops?IdTransport=@a&NameTransport=@Bus.Name&TypeTransport=@Bus.Type">
+                <a class="gradient-button" href="/Stops?IdTransport=@idTransport&NameTransport=@Bus.Name&TypeTransport=@Bus.Type">
                     <span style="font-size: 200%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">@NameArray.First()</span> @NameArray.Last()
                 </a>
             </li>
-        if(i%2==0)
+            if (indent % 2 == 0)
             {<br>
             }
-            ++i;
-            ++a;
+            ++indent;
+            ++idTransport;
         }
     </ul>
    

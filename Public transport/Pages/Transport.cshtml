@@ -2,14 +2,14 @@
 @using Public_transport.Models
 @model Public_transport.Pages.TransportModel
 @{
-    int index = 0;
-    int value1 = 0;
-    int value2 = 0;
-    int namber = 0;
+    int counter = 0;
+    int TrolleybusIndex = 0;
+    int BusIndex = 0;
+    int nameIndex = 0;
     int dayofweek = (int)DateTime.Now.DayOfWeek;
     List<PublicTransport> NAME = new List<PublicTransport>();
     List<string> TIMEt = new List<string>();
-    List<string> TIMEa = new List<string>();
+    List<string> TIMEb = new List<string>();
     foreach(PublicTransport name in Model.ResName)
     {
         NAME.Add(name);
@@ -22,7 +22,7 @@
         <h2>Троллейбусы</h2>
     @foreach (RelationshipBetweenTransportsAndStops Time in Model.ResId)
         {
-            @if(NAME[value1].Type=="T")
+        @if (NAME[TrolleybusIndex].Type == "T")
             {
                 if(dayofweek==6||dayofweek==0)
                 {
@@ -70,10 +70,10 @@
                         TIMEt.Add(TimeMonFri.First()); 
                     }
                 }
-                value1++;
+            TrolleybusIndex++;
             }
 
-            if(value1==0)
+        if (TrolleybusIndex == 0)
             {
                 <a>На данной остановке маршрутов нет</a>
                 break;
@@ -84,8 +84,8 @@
             Dictionary<string, string> keysT = new Dictionary<string, string>();
             for (var i = 0; i < TIMEt.Count; i++)
             {
-                keysT.Add(NAME[namber].Name, TIMEt[i]);
-                namber++;
+                keysT.Add(NAME[nameIndex].Name, TIMEt[i]);
+                nameIndex++;
             }
             foreach(var item in keysT.OrderBy(x=>x.Value))
             {
@@ -96,7 +96,7 @@
         <h2>Автобусы</h2>
     @foreach (RelationshipBetweenTransportsAndStops Time in Model.ResId)
         {
-            @if(NAME[value2].Type=="A")
+        @if (NAME[BusIndex].Type == "A")
             {
                 if (dayofweek==6||dayofweek==0)
                 {
@@ -114,11 +114,11 @@
                                            orderby x.TimeOfDay ascending
                                            select x).First();
                         string time = closestTime.ToString("HH:mm");
-                        TIMEa.Add(time);
+                        TIMEb.Add(time);
                     }
                     catch
                     {
-                        TIMEa.Add(TimeSaSu.First());
+                        TIMEb.Add(TimeSaSu.First());
                     }
                 }
                 else
@@ -137,23 +137,23 @@
                                            orderby x.TimeOfDay ascending
                                            select x).First();
                         string time = closestTime.ToString("HH:mm");
-                        TIMEa.Add(time);
+                        TIMEb.Add(time);
                     }
                     catch
                     {
-                        TIMEa.Add(TimeMonFri.First());
+                        TIMEb.Add(TimeMonFri.First());
                     }
                 }
             }
-            value2++;
+        BusIndex++;
             
         }
         @{
             Dictionary<string, string> keysA = new Dictionary<string, string>();
-            for (var i = 0; i < TIMEa.Count; i++)
+            for (var i = 0; i < TIMEb.Count; i++)
             {
-            keysA.Add(NAME[namber].Name, TIMEa[i]);
-                namber++;
+                keysA.Add(NAME[nameIndex].Name, TIMEb[i]);
+                nameIndex++;
             }
             foreach(var item in keysA.OrderBy(x=>x.Value))
             {
@@ -173,10 +173,10 @@
         {
             string[] NameArray = Name.Name.Split(new string[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
             <li><a class="gradient-button" href="/Time?IdStops=@Model.ID&IdTransport=@Name.Id&NameTransport=@Name.Name&NameStop=@Model.Name&TypeTransport=@Name.Type"><span style="font-size: 200%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">@NameArray.First()</span> @NameArray.Last()</a></li>
-            ++index;
+            ++counter;
         }
 
-        if (index==0)
+        if (counter==0)
         {
             <li>На данной остановке маршрутов нет</li>
             break;

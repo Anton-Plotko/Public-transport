@@ -2,7 +2,7 @@
 @using Public_transport.Models
 @model Public_transport.Pages.AllStopsModel
 @{
-    int namber = 1;
+    int idStop = 1;
 }
 <head>
     <script src="~/lib/list.js/list.js"></script>
@@ -15,8 +15,8 @@
         <ul class="list" style="list-style: none;">
             @foreach (Stop Stop in Model.ResAllStops)
             {
-                <li class="gradient-button"><a class="name" href="/Transport?IdStops=@namber&NameStop=@Stop.Name">@Stop.Name</a></li>
-                ++namber;
+                <li class="gradient-button"><a class="name" href="/Transport?IdStops=@idStop&NameStop=@Stop.Name">@Stop.Name</a></li>
+                ++idStop;
             }
         </ul>
     </div>
