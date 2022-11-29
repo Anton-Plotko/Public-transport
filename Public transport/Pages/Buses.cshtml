@@ -1,30 +1,47 @@
 ﻿@page
 @model Public_transport.Pages.BusesModel
 @{
-    int indent = 1;
-    int idTransport = 17;
+    int indent1 = 1;
+    int idTransport1 = 17;
+    int indent2 = 1;
+    int idTransport2 = 17;
 }
-
-<div class="center">
-    @foreach (PublicTransport Bus in Model.ResBus)
-    {
-        string[] NameArray= Bus.Name.Split(new string[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
-        if (indent % 2 != 0)
-        {
-            <a class="gradient-button1" href="/Stops?IdTransport=@idTransport&NameTransport=@Bus.Name&TypeTransport=@Bus.Type">
-                <span style="font-size: 200%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">@NameArray.First()</span> @NameArray.Last()
-            </a>
-        }
-        if (indent % 2 == 0)
-        {
-            <a class="gradient-button2" href="/Stops?IdTransport=@idTransport&NameTransport=@Bus.Name&TypeTransport=@Bus.Type">
-                <span style="font-size: 200%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">@NameArray.First()</span> @NameArray.Last()
-            </a>
-            <br>
-        }
-        ++indent;
-        ++idTransport;
-    }
+<div style="margin-left:290px;">
+<table>
+    <tr>
+        <td align="right">
+            @foreach (PublicTransport Bus in Model.ResBus)
+            {
+                string[] NameArray= Bus.Name.Split(new string[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
+        
+                if (indent1 % 2 != 0)
+                {
+                    <a class="gradient-button1" href="/Stops?IdTransport=@idTransport1&NameTransport=@Bus.Name&TypeTransport=@Bus.Type">
+                        <span style="font-size: 200%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">@NameArray.First()</span> @NameArray.Last()
+                    </a><br>
+                }
+                ++indent1;
+                ++idTransport1;
+            }
+        </td>
+        <td align="left">
+            @foreach (PublicTransport Bus in Model.ResBus)
+            {
+                string[] NameArray= Bus.Name.Split(new string[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
+       
+                if (indent2 % 2 == 0)
+                {
+                    <a class="gradient-button2" href="/Stops?IdTransport=@idTransport2&NameTransport=@Bus.Name&TypeTransport=@Bus.Type">
+                        <span style="font-size: 200%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">@NameArray.First()</span> @NameArray.Last()
+                    </a><br>
+                }
+            
+                ++indent2;
+                ++idTransport2;
+            }
+        </td>
+    </tr>
+</table>
 </div>
 @section BusesStyle {
     <link rel="stylesheet" href="~/css/BusesStyle.css" />
